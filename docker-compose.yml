@@ -1,0 +1,15 @@
+version: '3'
+services: 
+    web:
+        build: .
+        volumes:
+            - ./app:/root/app
+        ports:
+            - 5000:5000
+        command: poetry run bash -c "exec uvicorn --reload --port 5000 --host 0.0.0.0 app.main:app"
+        environment:
+            - _ENV=dev
+            - PORT=5000
+            - GCP_PROJECT_NAME=PROJECT_ID
+            - API_PROJECT_NAME=MyProject
+            - API_VERSION=1.0.0

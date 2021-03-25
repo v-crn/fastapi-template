@@ -1,0 +1,4 @@
+VERSION = "1.0.0"
+PROJECT_NAME = "My Project"
+DEBUG = False
+PORT = 5000
