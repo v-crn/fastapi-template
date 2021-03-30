@@ -8,8 +8,10 @@ ENV PORT 5000
 EXPOSE 5000
 
 # install python packages
-ADD pyproject.toml ./
-RUN pip install pip setuptools -U && pip install --upgrade pip
-RUN pip install poetry && poetry install
+RUN pip install pip setuptools -U \
+    && pip install --upgrade pip \
+    && pip install --no-cache-dir poetry==1.1.* && \
+    poetry config virtualenvs.create false && \
+    poetry install --no-dev
 
-CMD poetry run exec uvicorn --port $PORT --host 0.0.0.0 app.main:app
+CMD exec uvicorn --port $PORT --host 0.0.0.0 app.main:app
