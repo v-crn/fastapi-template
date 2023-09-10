@@ -10,8 +10,8 @@ endpoint = f"{url}/{Endpoints.hello}"
 
 
 def test_api_hello_dev__正常なPOSTリクエストに対しステータスコード200() -> None:
-    headers = make_authroized_headers(audience_url=url)
     data = {"from_who": "John"}
+    headers = make_authroized_headers(audience_url=url)
     res = requests.post(url=endpoint, json=data, headers=headers)
     assert res.status_code == 200, f"Invalid response: {res.status_code}"
     hello_response = HelloResponse(**res.json())
