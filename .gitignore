@@ -1,7 +1,7 @@
 ### dotfiles ###
 .*
 !.gitignore
-!.env.*.template
+!.*.template
 
 
 ### VisualStudioCode ###
