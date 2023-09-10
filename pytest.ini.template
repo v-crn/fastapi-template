@@ -1,0 +1,4 @@
+[pytest]
+env =
+    GOOGLE_APPLICATION_CREDENTIALS=
+    API_URL_DEV=
