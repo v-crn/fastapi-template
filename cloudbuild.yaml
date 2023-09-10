@@ -1,0 +1,59 @@
+steps:
+  - id: build image
+    name: "gcr.io/cloud-builders/docker"
+    args:
+      - build
+      - --target
+      - ${_TARGET}
+      - -t
+      - gcr.io/${_PROJECT}/${_IMAGE}:latest
+      - -f
+      - ${_DOCKERFILE_PATH}
+      - --progress
+      - plain
+      - --cache-from
+      - gcr.io/${_PROJECT}/${_IMAGE}:latest
+      - "."
+      - --build-arg
+      - _WORK_DIR=${_WORK_DIR}
+      - --build-arg
+      - _PORT=${_PORT}
+  - id: push image
+    name: "gcr.io/cloud-builders/docker"
+    args: ["push", "gcr.io/${_PROJECT}/${_IMAGE}:latest"]
+  - id: run deploy
+    name: "gcr.io/cloud-builders/gcloud"
+    args:
+      - beta
+      - run
+      - deploy
+      - ${_SERVICE}
+      - --service-account
+      - ${_SERVICE_ACCOUNT}
+      - --image
+      - gcr.io/${_PROJECT}/${_IMAGE}
+      - --region
+      - ${_REGION}
+      - --platform
+      - managed
+      - --memory
+      - ${_MEMORY}
+      - --cpu
+      - ${_CPU}
+      - --max-instances
+      - ${_MAX_INSTANCES}
+      - --min-instances
+      - ${_MIN_INSTANCES}
+      - --concurrency
+      - ${_CONCURRENCY}
+      - --timeout
+      - ${_TIMEOUT}
+      - --set-env-vars
+      - SERVICE_NAME=${_SERVICE_NAME}
+      - --set-env-vars
+      - API_VERSION=${_API_VERSION}
+      - --set-env-vars
+      - DEBUG=${_DEBUG}
+timeout: 3600s
+options:
+  substitution_option: "MUST_MATCH"
