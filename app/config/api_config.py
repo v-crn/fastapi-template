@@ -1,4 +1,6 @@
-VERSION = "1.0.0"
-PROJECT_NAME = "My Project"
-DEBUG = False
-PORT = 5000
+import os
+
+SERVICE_NAME = os.environ["SERVICE_NAME"]
+API_VERSION = os.environ["API_VERSION"]
+PORT = int(os.environ["PORT"])
+DEBUG: bool = os.environ["DEBUG"] == "True"
