@@ -1,19 +1,9 @@
-FROM python:3.11-slim as builder
-COPY pyproject.toml ./
-RUN pip install setuptools -U && \
-    pip install --upgrade pip && \
-    pip install --no-cache-dir poetry && \
-    poetry export --without-hashes -f requirements.txt -o /tmp/requirements.txt
-
-
-FROM python:3.11-slim as prod
+FROM python:3.11-slim
 ARG _WORK_DIR
 ENV WORK_DIR $_WORK_DIR
 ARG _PORT
 ENV PORT $_PORT
-
 WORKDIR $WORK_DIR
-COPY --from=builder /tmp/requirements.txt /tmp
 
 # --- Locale ---
 RUN apt-get update \
@@ -55,8 +45,17 @@ ENV PYTHONUNBUFFERED=true
 ENV PYTHONPATH $WORK_DIR:$PYTHONPATH
 RUN echo "PYTHONPATH... $PYTHONPATH"
 
+# --- Install python package manager ---
+RUN pip install --no-cache-dir poetry \
+    && poetry config virtualenvs.create false
+
 # --- Install python packages ---
-RUN pip install -r /tmp/requirements.txt
+COPY pyproject.toml $WORK_DIR
+RUN poetry install
+
+# --- Install gcloud ---
+RUN curl -sSL https://sdk.cloud.google.com | bash
+ENV PATH $PATH:/root/google-cloud-sdk/bin
 
 # --- Create the necessary links and cache ---
 # --- Delete unnecessary packages ---
