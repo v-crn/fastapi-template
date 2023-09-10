@@ -1,4 +1,5 @@
 import requests
+
 from app.config.api_config import API_VERSION
 from app.models.api.version_response import VersionResponse
 from tests.config import testconfig_dev
