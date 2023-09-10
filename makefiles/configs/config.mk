@@ -1,0 +1,18 @@
+.PHONY: config
+config:
+	$(eval _REGION:=${_REGION})
+	$(eval _IMAGE:=${_IMAGE})
+	$(eval _SERVICE:=${_SERVICE})
+	$(eval _TARGET:=${_TARGET})
+	$(eval _CPU:=${_CPU})
+	$(eval _MEMORY:=${_MEMORY})
+	$(eval _MAX_INSTANCES:=${_MAX_INSTANCES})
+	$(eval _MIN_INSTANCES:=${_MIN_INSTANCES})
+	$(eval _CONCURRENCY:=${_CONCURRENCY})
+	$(eval _TIMEOUT:=${_TIMEOUT})
+	$(eval _SERVICE_NAME:=${SERVICE_NAME})
+	$(eval _API_VERSION:=${API_VERSION})
+	$(eval _DEBUG:=${DEBUG})
+	$(eval _WORK_DIR:=${WORK_DIR})
+	$(eval _PORT:=${PORT})
+	$(eval _DOCKERFILE_PATH:=${_DOCKERFILE_PATH})
