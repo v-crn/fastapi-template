@@ -1,4 +1,3 @@
-
 import requests
 
 from app.config.endpoints import Endpoints
