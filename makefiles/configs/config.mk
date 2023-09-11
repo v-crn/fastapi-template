@@ -15,4 +15,4 @@ config:
 	$(eval _DEBUG:=${DEBUG})
 	$(eval _WORK_DIR:=${WORK_DIR})
 	$(eval _PORT:=${PORT})
-	$(eval _DOCKERFILE_PATH:=${_DOCKERFILE_PATH})
+	$(eval _DOCKERFILE_PATH:=${DOCKERFILE_PATH})

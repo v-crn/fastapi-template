@@ -1,12 +1,10 @@
 version: "3"
 services:
   app:
-    env_file:
-      - .env
-      - .env.dev
     build:
       context: ./
-      dockerfile: ${DOCKERFILE_LOCAL_PATH}
+      dockerfile: ${DOCKERFILE_PATH}
+      target: ${TARGET_LOCAL}
     image: ${IMAGE_NAME}
     container_name: ${CONTAINER_NAME}
     hostname: localhost
@@ -17,5 +15,9 @@ services:
     volumes:
       - ./:${WORK_DIR}
       - ~/.ssh:${WORK_DIR}/.ssh:ro
-    entrypoint:
-      - scripts/run.sh
+      - ~/.gcloud:${WORK_DIR}/.gcloud:ro
+    # command: [ "tail", "-f", "/dev/null" ]  # 何もせずに起動
+    command: [ "sh", "scripts/run.sh" ]
+    env_file:
+      - .env
+      - dotenvs/.env.dev
