@@ -1,4 +1,5 @@
-.
-!app
-!pyproject.toml
+*
+!app/**
+!scripts/**
 !Dockerfile
+!pyproject.toml
