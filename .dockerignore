@@ -1,0 +1,90 @@
+# dotfiles
+.*
+**/.*
+
+# Python artifacts
+__pycache__
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+
+# Test artifacts
+.tox/
+.nox/
+.coverage
+.coverage.*
+.pytest_cache/
+.cache/
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+
+# Jupyter Notebook artifacts
+.ipynb_checkpoints
+
+# IDE artifacts (VS Code / PyCharm / IntelliJ IDEA / Sublime Text)
+.vscode/
+.idea/
+*.sublime-workspace
+
+# Distribution / packaging
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# PyBuilder and Scrapy
+target/
+.scrapy
+
+# Translations
+*.mo
+
+# Django and logs
+*.log
+
+# Sphinx documentation
+docs/_build/
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# git and OS generated files
+.gitignore
+.git/
+.DS_Store
+
+# Docker related files
+.dockerignore
+Dockerfile*
+docker-compose*
+
+# Other files and artifacts
+README.md
+LICENSE.md
+*.sql
+*.sqlite3
+
+*~
