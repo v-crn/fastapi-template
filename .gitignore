@@ -1,7 +1,10 @@
 ### dotfiles ###
 .*
 !.gitignore
-!.*.template
+!.dockerignore
+!.gcloudignore
+!.hadolint.yaml
+!dotenvs/*.template
 
 
 ### VisualStudioCode ###
