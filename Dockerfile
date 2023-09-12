@@ -71,7 +71,6 @@ COPY scripts/ $WORK_DIR/scripts/
 
 FROM base as base_builder
 COPY pyproject.toml $WORK_DIR
-# --- Install poetry ---
 RUN pip install --no-cache-dir poetry \
     && poetry config virtualenvs.create false
 
