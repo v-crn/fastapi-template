@@ -2,24 +2,25 @@
 deploy_dev: config config_dev
 	gcloud builds submit --config cloudbuild.yaml \
 	--substitutions \
-	^---^_PROJECT=${_PROJECT}\
-	---_SERVICE=${_SERVICE}\
-	---_SERVICE_ACCOUNT=${_SERVICE_ACCOUNT}\
-	---_IMAGE=${_IMAGE}\
-	---_REGION=${_REGION}\
-	---_TARGET=${_TARGET}\
-	---_MEMORY=${_MEMORY}\
-	---_CPU=${_CPU}\
-	---_MAX_INSTANCES=${_MAX_INSTANCES}\
-	---_MIN_INSTANCES=${_MIN_INSTANCES}\
+	^---^_API_VERSION=${_API_VERSION}\
 	---_CONCURRENCY=${_CONCURRENCY}\
-	---_TIMEOUT=${_TIMEOUT}\
+	---_CPU=${_CPU}\
 	---_DEBUG=${_DEBUG}\
 	---_DOCKERFILE_PATH=${_DOCKERFILE_PATH}\
-	---_WORK_DIR=${_WORK_DIR}\
+	---_IMAGE=${_IMAGE}\
+	---_MAX_INSTANCES=${_MAX_INSTANCES}\
+	---_MEMORY=${_MEMORY}\
+	---_MIN_INSTANCES=${_MIN_INSTANCES}\
 	---_PORT=${_PORT}\
+	---_PROJECT=${_PROJECT}\
+	---_REGION=${_REGION}\
+	---_SERVICE_ACCOUNT=${_SERVICE_ACCOUNT}\
 	---_SERVICE_NAME=${_SERVICE_NAME}\
-	---_API_VERSION=${_API_VERSION}
+	---_SERVICE=${_SERVICE}\
+	---_TARGET=${_TARGET}\
+	---_TIMEOUT=${_TIMEOUT}\
+	---_USER=${_USER}\
+	---_WORK_DIR=${_WORK_DIR}
 
 
 .PHONY: check_files_for_upload

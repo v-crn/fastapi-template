@@ -15,9 +15,11 @@ steps:
       - gcr.io/${_PROJECT}/${_IMAGE}:latest
       - "."
       - --build-arg
-      - _WORK_DIR=${_WORK_DIR}
-      - --build-arg
       - _PORT=${_PORT}
+      - --build-arg
+      - _USER=${_USER}
+      - --build-arg
+      - _WORK_DIR=${_WORK_DIR}
   - id: push image
     name: "gcr.io/cloud-builders/docker"
     args: ["push", "gcr.io/${_PROJECT}/${_IMAGE}:latest"]

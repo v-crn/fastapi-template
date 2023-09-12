@@ -1,4 +1,3 @@
-
 FROM python:3.11-slim as base
 # --- Locale ---
 RUN apt-get update \
@@ -54,6 +53,10 @@ RUN ldconfig \
 # --- Set build args ---
 ARG _PORT
 ENV PORT $_PORT
+
+ARG _USER
+ENV USER $_USER
+USER $USER
 
 ARG _WORK_DIR
 ENV WORK_DIR $_WORK_DIR
