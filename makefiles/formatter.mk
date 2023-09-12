@@ -10,6 +10,7 @@ format:
 	autoflake -ri --remove-all-unused-imports --ignore-init-module-imports --remove-unused-variables ${PACKAGE_NAME} tests
 	isort --profile=black ${PACKAGE_NAME} tests
 
-.PHONY: unsd
-unsd:
+
+.PHONY: show_unused_vars
+show_unused_vars:
 	vulture --min-confidence=70 --exclude .venv .
