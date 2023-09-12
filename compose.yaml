@@ -13,6 +13,7 @@ services:
       - ${PORT}:${PORT}
     volumes:
       - ./:${WORK_DIR}
+      - ~/.gitconfig:/etc/gitconfig:ro
       - ~/.ssh:${WORK_DIR}/.ssh:ro
       - ~/.gcloud:${WORK_DIR}/.gcloud:ro
     # command: [ "tail", "-f", "/dev/null" ]  # 何もせずに起動
