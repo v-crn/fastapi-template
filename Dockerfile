@@ -54,10 +54,6 @@ RUN ldconfig \
 ARG _PORT
 ENV PORT $_PORT
 
-ARG _USER
-ENV USER $_USER
-USER $USER
-
 ARG _WORK_DIR
 ENV WORK_DIR $_WORK_DIR
 
@@ -83,6 +79,12 @@ ENV PATH $PATH:/root/google-cloud-sdk/bin
 
 # --- Install python packages ---
 RUN poetry install
+
+# --- Set USER ---
+ARG _USER
+ENV USER $_USER
+USER $USER
+
 CMD [ "sh", "scripts/run.sh" ]
 
 
@@ -93,4 +95,10 @@ RUN poetry export --without-hashes -f requirements.txt -o /tmp/requirements.txt
 FROM base as cloud_runtime
 COPY --from=cloud_builder /tmp/requirements.txt /tmp
 RUN pip install --no-cache-dir -r /tmp/requirements.txt
+
+# --- Set USER ---
+ARG _USER
+ENV USER $_USER
+USER $USER
+
 CMD [ "sh", "scripts/run.sh" ]
